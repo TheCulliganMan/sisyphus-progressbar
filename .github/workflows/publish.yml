@@ -127,12 +127,26 @@ jobs:
       - name: Build example for GitHub Pages
         working-directory: ./example
         run: |
-          # Set the correct base path for GitHub Pages
-          PUBLIC_URL="/SisyphusLoader" npm run build
+          # Build with the correct base path for GitHub Pages
+          npm run build
+        env:
+          PUBLIC_URL: /sisyphus-progressbar
 
       - name: Verify build output
         working-directory: ./example
         run: |
+          echo "📦 Listing build directory contents:"
+          ls -la build/
+          echo "📦 Listing static directory contents:"
+          ls -la build/static/ || echo "No static directory found"
+          if [ -d "build/static/js" ]; then
+            echo "📦 Listing JS files:"
+            ls -la build/static/js/
+          fi
+          if [ -d "build/static/css" ]; then
+            echo "📦 Listing CSS files:"
+            ls -la build/static/css/
+          fi
           if [ ! -f "build/index.html" ]; then
             echo "❌ build/index.html not found"
             exit 1
@@ -142,6 +156,8 @@ jobs:
             exit 1
           fi
           echo "✅ Example build completed successfully"
+          echo "🔍 Checking index.html content:"
+          head -20 build/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
