@@ -28,8 +28,11 @@ module.exports = {
       tsconfig: './tsconfig.json',
     }),
     postcss({
-      extract: false,
+      extract: true,
       minimize: true,
+      use: [
+        ['sass', { includePaths: ['./src'] }]
+      ]
     }),
   ],
   external: ['react', 'react-dom'],
