@@ -67,7 +67,7 @@ const SisyphusLoader = ({ progress: externalProgress, showPercentage = true }) =
       if (externalProgress !== undefined) {
           if (quoteRotationIntervalRef.current) clearInterval(quoteRotationIntervalRef.current);
           return;
-      };
+      }
 
       // Clear previous interval on each interaction to reset the timer
       if (quoteRotationIntervalRef.current) {
