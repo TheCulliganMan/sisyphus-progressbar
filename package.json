@@ -1,6 +1,6 @@
 {
   "name": "sisyphus-progressbar",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An animated React progressbar component inspired by the myth of Sisyphus",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
