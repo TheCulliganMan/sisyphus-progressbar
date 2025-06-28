@@ -110,7 +110,7 @@ const SisyphusLoader = ({ progress: externalProgress, showPercentage = true }) =
     }, 30000); // Approximately 2 times a minute
 
     return () => clearInterval(randomDropInterval);
-  }, [externalProgress]);
+  }, [externalProgress, PHYSICS.initialVelocity]);
 
   // Main physics animation loop
   useEffect(() => {
@@ -184,7 +184,7 @@ const SisyphusLoader = ({ progress: externalProgress, showPercentage = true }) =
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [PHYSICS.gravity, PHYSICS.friction, PHYSICS.chaseSpeed, PHYSICS.pushSpeed, PHYSICS.moveSpeed, PHYSICS.initialVelocity, PHYSICS.rollAmount]);
 
   const displayProgress = getDisplayProgress(physicsState.sisyphusPosition);
   const sisyphusPos = getPosition(physicsState.sisyphusPosition);
