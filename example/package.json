@@ -1,11 +1,8 @@
-{  "name": "sisyphus-progressbar-example",
+{
+  "name": "sisyphus-progressbar-example",
   "version": "1.0.0",
   "private": true,
   "homepage": "https://theculliganman.github.io/sisyphus-progressbar",
-  "dependencies": {ame": "sisyphus-progressbar-example",
-  "version": "1.0.0",
-  "private": true,
-  "homepage": "https://theculliganman.github.io/ sisyphus-progressbar",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
