@@ -41,7 +41,7 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
   
   // State for the rotating quotes
   const [quoteIndex, setQuoteIndex] = useState(0);
-  const quoteRotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const quoteRotationIntervalRef = useRef<number | null>(null);
 
   const animationRef = useRef<number>();
   const lastTimeRef = useRef(Date.now());
@@ -390,14 +390,14 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
         {currentQuote && displayProgress < 95 && (
           <div className="absolute top-2 left-4 right-4 text-center">
             <div className="text-xs text-amber-900 italic bg-amber-50 bg-opacity-80 p-2 rounded-md shadow">
-              "{currentQuote}"
+              &ldquo;{currentQuote}&rdquo;
             </div>
           </div>
         )}
         {displayProgress >= 95 && (
           <div className="absolute top-4 left-4 right-4 text-center">
             <div className="text-sm text-amber-900 font-serif italic">
-               "One must imagine Sisyphus happy."
+               &ldquo;One must imagine Sisyphus happy.&rdquo;
             </div>
           </div>
         )}
