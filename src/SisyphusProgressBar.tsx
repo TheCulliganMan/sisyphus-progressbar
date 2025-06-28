@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import './styles.css';
 
 export interface SisyphusProgressBarProps {
   /**
@@ -228,9 +227,31 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
   const currentQuote = quotes[quoteIndex];
 
   return (
-    <div className="w-full max-w-md mx-auto p-4 space-y-4 font-sans">
-      <div className="relative h-40 bg-amber-50 rounded-lg overflow-hidden shadow-2xl">
-        <div className="absolute inset-0 border-4 border-amber-700 rounded-lg pointer-events-none">
+    <div style={{
+      width: '100%',
+      maxWidth: '28rem',
+      margin: '0 auto',
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1rem',
+      fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif'
+    }}>
+      <div style={{
+        position: 'relative',
+        height: '10rem',
+        backgroundColor: '#fffbeb',
+        borderRadius: '0.5rem',
+        overflow: 'hidden',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+      }}>
+        <div style={{
+          position: 'absolute',
+          inset: '0',
+          border: '4px solid #b45309',
+          borderRadius: '0.5rem',
+          pointerEvents: 'none'
+        }}>
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id="greekKey" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -244,14 +265,18 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
             <rect x="2" y="90" width="96" height="8" fill="url(#greekKey)" opacity="0.3"/>
           </svg>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-100 via-orange-50 to-amber-50">
-          <svg className="absolute top-4 right-4 w-12 h-12">
+        <div style={{
+          position: 'absolute',
+          inset: '0',
+          background: 'linear-gradient(to bottom, #fef3c7, #fed7aa, #fffbeb)'
+        }}>
+          <svg style={{ position: 'absolute', top: '1rem', right: '1rem', width: '3rem', height: '3rem' }}>
             <circle cx="24" cy="24" r="10" fill="#FFA500" opacity="0.8"/>
             {[...Array(8)].map((_, i) => (
               <line key={i} x1="24" y1="24" x2={24 + 20 * Math.cos((i * Math.PI) / 4)} y2={24 + 20 * Math.sin((i * Math.PI) / 4)} stroke="#FFA500" strokeWidth="1" opacity="0.4" />
             ))}
           </svg>
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+          <svg style={{ position: 'absolute', inset: '0', width: '100%', height: '100%' }} viewBox="0 0 100 100">
             {[...Array(3)].map((_, i) => {
               const orbitRadiusX = 20 + i * 7;
               const orbitRadiusY = 6 + i * 2;
@@ -280,7 +305,7 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
             })}
           </svg>
         </div>
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <svg style={{ position: 'absolute', inset: '0', width: '100%', height: '100%' }} viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <pattern id="marble" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
               <rect width="20" height="20" fill="#D4A373"/>
@@ -293,7 +318,7 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
           <path d="M 0 100 L 85 50 L 100 48 L 100 100 Z" fill="url(#marble)" stroke="#8B6914" strokeWidth="1" />
           <path d="M 10 95 Q 30 85 50 70 T 85 53" stroke="#F5DEB3" strokeWidth="3" fill="none" opacity="0.6" />
         </svg>
-        <svg className="absolute left-2 bottom-0 w-8 h-16" viewBox="0 0 20 40">
+        <svg style={{ position: 'absolute', left: '0.5rem', bottom: '0', width: '2rem', height: '4rem' }} viewBox="0 0 20 40">
           <rect x="4" y="5" width="12" height="30" fill="#DDD" stroke="#AAA" strokeWidth="0.5"/>
           <rect x="2" y="0" width="16" height="5" fill="#DDD" stroke="#AAA" strokeWidth="0.5"/>
           <rect x="2" y="35" width="16" height="5" fill="#DDD" stroke="#AAA" strokeWidth="0.5"/>
@@ -301,7 +326,7 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
             <line key={i} x1={6 + i * 3} y1="5" x2={6 + i * 3} y2="35" stroke="#AAA" strokeWidth="0.3"/>
           ))}
         </svg>
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+        <svg style={{ position: 'absolute', inset: '0', width: '100%', height: '100%' }} viewBox="0 0 100 100">
           <g transform={`translate(${boulderPos.x}, ${boulderPos.y - 7})`}>
             <g transform={`rotate(${boulderRotation} 0 0)`}>
               <circle cx="0" cy="0" r="7" fill="#8B7D6B" stroke="#5D4E37" strokeWidth="0.8" />
@@ -312,7 +337,7 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
             </g>
           </g>
         </svg>
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+        <svg style={{ position: 'absolute', inset: '0', width: '100%', height: '100%' }} viewBox="0 0 100 100">
           <g transform={`translate(${sisyphusX}, ${sisyphusY})`}>
             <g transform={`translate(-10, -3) scale(1) rotate(${isChasing ? 5 : isPushing ? -10 : -struggleOffset * 2} 0 0)`}>
               <ellipse cx="0" cy="8" rx="4" ry="1" fill="#000" opacity="0.2" />
@@ -384,28 +409,56 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
           {isChasing && ( <text x={sisyphusX - 15} y={sisyphusY - 15} fontSize="4" fill="#8B4513" fontWeight="bold">!!!</text> )}
         </svg>
         {showPercentage && (
-          <div className="absolute bottom-3 right-3 text-sm font-bold text-amber-800 bg-amber-100 px-2 py-1 rounded border border-amber-600">
+          <div style={{
+            position: 'absolute',
+            bottom: '0.75rem',
+            right: '0.75rem',
+            fontSize: '0.875rem',
+            fontWeight: 'bold',
+            color: '#92400e',
+            backgroundColor: '#fef3c7',
+            padding: '0.25rem 0.5rem',
+            borderRadius: '0.25rem',
+            border: '1px solid #d97706'
+          }}>
             {displayProgress.toFixed(1)}%
           </div>
         )}
         {currentQuote && displayProgress < 95 && (
-          <div className="absolute top-2 left-4 right-4 text-center">
-            <div className="text-xs text-amber-900 italic bg-amber-50 bg-opacity-80 p-2 rounded-md shadow">
+          <div style={{ position: 'absolute', top: '0.5rem', left: '1rem', right: '1rem', textAlign: 'center' }}>
+            <div style={{
+              fontSize: '0.75rem',
+              color: '#78350f',
+              fontStyle: 'italic',
+              backgroundColor: 'rgba(255, 251, 235, 0.8)',
+              padding: '0.5rem',
+              borderRadius: '0.375rem',
+              boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+            }}>
               &ldquo;{currentQuote}&rdquo;
             </div>
           </div>
         )}
         {displayProgress >= 95 && (
-          <div className="absolute top-4 left-4 right-4 text-center">
-            <div className="text-sm text-amber-900 font-serif italic">
+          <div style={{ position: 'absolute', top: '1rem', left: '1rem', right: '1rem', textAlign: 'center' }}>
+            <div style={{
+              fontSize: '0.875rem',
+              color: '#78350f',
+              fontFamily: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+              fontStyle: 'italic'
+            }}>
                &ldquo;One must imagine Sisyphus happy.&rdquo;
             </div>
           </div>
         )}
       </div>
       {externalProgress === undefined && (
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <label style={{
+            fontSize: '0.875rem',
+            fontWeight: '500',
+            color: '#374151'
+          }}>
             Progress Control: {internalProgress}%
           </label>
           <input
@@ -414,12 +467,22 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
             max="100"
             value={internalProgress}
             onChange={(e) => setInternalProgress(Number(e.target.value))}
-            className="w-full h-2 bg-amber-200 rounded-lg appearance-none cursor-pointer"
             style={{
+              width: '100%',
+              height: '0.5rem',
+              backgroundColor: '#fcd34d',
+              borderRadius: '0.5rem',
+              appearance: 'none',
+              cursor: 'pointer',
               background: `linear-gradient(to right, #D97706 0%, #D97706 ${internalProgress}%, #FED7AA ${internalProgress}%, #FED7AA 100%)`
             }}
           />
-          <div className="flex justify-between text-xs text-gray-600">
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            fontSize: '0.75rem',
+            color: '#4b5563'
+          }}>
             <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
           </div>
         </div>
