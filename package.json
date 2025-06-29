@@ -30,7 +30,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/theculliganman/sisyphus-progressbar.git"
+    "url": "git+https://github.com/theculliganman/sisyphus-progressbar.git"
   },
   "homepage": "https://theculliganman.github.io/sisyphus-progressbar",
   "bugs": {
