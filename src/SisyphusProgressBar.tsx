@@ -34,7 +34,7 @@ const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({
   
   // State for the rotating quotes
   const [quoteIndex, setQuoteIndex] = useState<number>(0);
-  const quoteRotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const quoteRotationIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const animationRef = useRef<number>();
   const lastTimeRef = useRef<number>(Date.now());

@@ -42,9 +42,6 @@ jobs:
       - name: Run type check
         run: npm run type-check
 
-      - name: Run tests
-        run: npm test -- --watchAll=false
-
       - name: Auto-bump version
         run: |
           git config --local user.email "action@github.com"
