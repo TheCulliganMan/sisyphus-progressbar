@@ -26,15 +26,15 @@
     "ui-component",
     "typescript"
   ],
-  "author": "Your Name",
+  "author": "TheCulliganMan",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/sisyphus-progressbar.git"
+    "url": "https://github.com/theculliganman/sisyphus-progressbar.git"
   },
-  "homepage": "https://yourusername.github.io/sisyphus-progressbar",
+  "homepage": "https://theculliganman.github.io/sisyphus-progressbar",
   "bugs": {
-    "url": "https://github.com/yourusername/sisyphus-progressbar/issues"
+    "url": "https://github.com/theculliganman/sisyphus-progressbar/issues"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
