@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SisyphusProgressBar from 'sisyphus-progressbar';
+import 'sisyphus-progressbar/dist/styles.css';
 
 function App() {
   const [controlledProgress, setControlledProgress] = useState(0);

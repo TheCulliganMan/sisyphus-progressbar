@@ -1,3 +1,59 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Sisyphus Progress Bar - Scoped CSS to avoid conflicts */
+
+/* Only include the specific Tailwind utilities we need, scoped to prevent conflicts */
+.sisyphus-progress-bar .w-full { width: 100%; }
+.sisyphus-progress-bar .max-w-md { max-width: 28rem; }
+.sisyphus-progress-bar .mx-auto { margin-left: auto; margin-right: auto; }
+.sisyphus-progress-bar .p-4 { padding: 1rem; }
+.sisyphus-progress-bar .space-y-4 > * + * { margin-top: 1rem; }
+.sisyphus-progress-bar .font-sans { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+.sisyphus-progress-bar .relative { position: relative; }
+.sisyphus-progress-bar .h-40 { height: 10rem; }
+.sisyphus-progress-bar .bg-amber-50 { background-color: rgb(255 251 235); }
+.sisyphus-progress-bar .rounded-lg { border-radius: 0.5rem; }
+.sisyphus-progress-bar .overflow-hidden { overflow: hidden; }
+.sisyphus-progress-bar .shadow-2xl { box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+.sisyphus-progress-bar .absolute { position: absolute; }
+.sisyphus-progress-bar .inset-0 { top: 0px; right: 0px; bottom: 0px; left: 0px; }
+.sisyphus-progress-bar .border-4 { border-width: 4px; }
+.sisyphus-progress-bar .border-amber-700 { border-color: rgb(180 83 9); }
+.sisyphus-progress-bar .pointer-events-none { pointer-events: none; }
+.sisyphus-progress-bar .top-4 { top: 1rem; }
+.sisyphus-progress-bar .right-4 { right: 1rem; }
+.sisyphus-progress-bar .w-12 { width: 3rem; }
+.sisyphus-progress-bar .h-12 { height: 3rem; }
+.sisyphus-progress-bar .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
+.sisyphus-progress-bar .from-amber-100 { --tw-gradient-from: rgb(254 243 199) var(--tw-gradient-from-position); --tw-gradient-to: rgb(254 243 199 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.sisyphus-progress-bar .via-orange-50 { --tw-gradient-to: rgb(255 247 237 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), rgb(255 247 237) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+.sisyphus-progress-bar .to-amber-50 { --tw-gradient-to: rgb(255 251 235) var(--tw-gradient-to-position); }
+.sisyphus-progress-bar .bottom-3 { bottom: 0.75rem; }
+.sisyphus-progress-bar .right-3 { right: 0.75rem; }
+.sisyphus-progress-bar .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.sisyphus-progress-bar .font-bold { font-weight: 700; }
+.sisyphus-progress-bar .text-amber-800 { color: rgb(146 64 14); }
+.sisyphus-progress-bar .bg-amber-100 { background-color: rgb(254 243 199); }
+.sisyphus-progress-bar .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.sisyphus-progress-bar .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.sisyphus-progress-bar .rounded { border-radius: 0.25rem; }
+.sisyphus-progress-bar .border { border-width: 1px; }
+.sisyphus-progress-bar .border-amber-600 { border-color: rgb(217 119 6); }
+.sisyphus-progress-bar .top-2 { top: 0.5rem; }
+.sisyphus-progress-bar .left-4 { left: 1rem; }
+.sisyphus-progress-bar .text-center { text-align: center; }
+.sisyphus-progress-bar .text-xs { font-size: 0.75rem; line-height: 1rem; }
+.sisyphus-progress-bar .text-amber-900 { color: rgb(120 53 15); }
+.sisyphus-progress-bar .italic { font-style: italic; }
+.sisyphus-progress-bar .bg-opacity-80 { --tw-bg-opacity: 0.8; }
+.sisyphus-progress-bar .rounded-md { border-radius: 0.375rem; }
+.sisyphus-progress-bar .shadow { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); }
+.sisyphus-progress-bar .font-serif { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
+.sisyphus-progress-bar .space-y-2 > * + * { margin-top: 0.5rem; }
+.sisyphus-progress-bar .font-medium { font-weight: 500; }
+.sisyphus-progress-bar .text-gray-700 { color: rgb(55 65 81); }
+.sisyphus-progress-bar .h-2 { height: 0.5rem; }
+.sisyphus-progress-bar .bg-amber-200 { background-color: rgb(253 230 138); }
+.sisyphus-progress-bar .appearance-none { appearance: none; }
+.sisyphus-progress-bar .cursor-pointer { cursor: pointer; }
+.sisyphus-progress-bar .flex { display: flex; }
+.sisyphus-progress-bar .justify-between { justify-content: space-between; }
+.sisyphus-progress-bar .text-gray-600 { color: rgb(75 85 99); }

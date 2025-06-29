@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import './styles.css';
 
 export interface SisyphusProgressBarProps {
   progress?: number;
@@ -205,7 +206,7 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
   const currentQuote = quotes[quoteIndex];
 
   return (
-    <div className="w-full max-w-md mx-auto p-4 space-y-4 font-sans">
+    <div className="sisyphus-progress-bar w-full max-w-md mx-auto p-4 space-y-4 font-sans">
       <div className="relative h-40 bg-amber-50 rounded-lg overflow-hidden shadow-2xl">
         <div className="absolute inset-0 border-4 border-amber-700 rounded-lg pointer-events-none">
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
