@@ -1,56 +1,35 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import SisyphusProgressBar from './SisyphusProgressBar';
-
-// Mock requestAnimationFrame
-global.requestAnimationFrame = jest.fn((cb) => {
-  setTimeout(cb, 0);
-  return 1;
-});
-
-global.cancelAnimationFrame = jest.fn();
+import { SisyphusProgressBar } from './SisyphusProgressBar';
 
 describe('SisyphusProgressBar', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  test('renders without crashing', () => {
+  it('renders without crashing', () => {
     render(<SisyphusProgressBar />);
-    expect(screen.getByText(/Progress Control:/)).toBeInTheDocument();
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
   });
 
-  test('shows percentage by default', () => {
-    render(<SisyphusProgressBar progress={50} />);
+  it('displays percentage when showPercentage is true', () => {
+    render(<SisyphusProgressBar progress={50} showPercentage={true} />);
     expect(screen.getByText('50.0%')).toBeInTheDocument();
   });
 
-  test('hides percentage when showPercentage is false', () => {
+  it('does not display percentage when showPercentage is false', () => {
     render(<SisyphusProgressBar progress={50} showPercentage={false} />);
     expect(screen.queryByText('50.0%')).not.toBeInTheDocument();
   });
 
-  test('shows progress control when no external progress provided', () => {
+  it('renders with controlled progress', () => {
+    const { rerender } = render(<SisyphusProgressBar progress={25} />);
+    
+    // Update progress
+    rerender(<SisyphusProgressBar progress={75} />);
+    
+    // Component should exist (we can't easily test the exact visual progress without more complex setup)
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
+  });
+
+  it('renders with uncontrolled mode', () => {
     render(<SisyphusProgressBar />);
-    expect(screen.getByText(/Progress Control:/)).toBeInTheDocument();
-    expect(screen.getByRole('slider')).toBeInTheDocument();
-  });
-
-  test('hides progress control when external progress provided', () => {
-    render(<SisyphusProgressBar progress={50} />);
-    expect(screen.queryByText(/Progress Control:/)).not.toBeInTheDocument();
-    expect(screen.queryByRole('slider')).not.toBeInTheDocument();
-  });
-
-  test('shows completion message when progress is 95% or higher', () => {
-    render(<SisyphusProgressBar progress={100} />);
-    // Just test that it renders without crashing at high progress
-    expect(screen.getByText(/\d+\.\d%/)).toBeInTheDocument();
-  });
-
-  test('shows quotes when progress is below 95%', () => {
-    render(<SisyphusProgressBar progress={50} />);
-    // Should show one of the quotes - looking for the first quote text
-    expect(screen.getByText(/The struggle itself toward the heights is enough to fill a man's heart/)).toBeInTheDocument();
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
   });
 });

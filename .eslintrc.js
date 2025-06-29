@@ -1,25 +1,25 @@
 module.exports = {
+  root: true,
   parser: '@typescript-eslint/parser',
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+  ],
   extends: [
     'eslint:recommended',
+    '@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
   ],
-  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
   env: {
     browser: true,
-    es2020: true,
-    jest: true,
+    es6: true,
     node: true,
   },
-  globals: {
-    NodeJS: 'readonly',
-  },
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
+  settings: {
+    react: {
+      version: 'detect',
     },
   },
   rules: {
@@ -28,10 +28,5 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
   },
 };

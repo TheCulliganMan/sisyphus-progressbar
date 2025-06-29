@@ -1,25 +1,28 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import './styles.css';
-
-// Physics constants
-const PHYSICS = {
-  gravity: 120,
-  friction: 0.98,
-  chaseSpeed: 80,
-  pushSpeed: 25,
-  moveSpeed: 40,
-  initialVelocity: 20,
-  rollAmount: 35, // The amount the boulder rolls down when progress is decreased manually
-};
 
 export interface SisyphusProgressBarProps {
+  /** External progress value between 0-100. If provided, component will be controlled. */
   progress?: number;
+  /** Whether to show the percentage display. Default is true. */
   showPercentage?: boolean;
 }
 
-const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true }: SisyphusProgressBarProps) => {
-  const [internalProgress, setInternalProgress] = useState(50);
-  const [physicsState, setPhysicsState] = useState({
+interface PhysicsState {
+  boulderPosition: number;
+  sisyphusPosition: number;
+  boulderVelocity: number;
+  targetPosition: number;
+  phase: 'normal' | 'chasing' | 'pushing';
+  animationPhase: number;
+  rollTarget: number;
+}
+
+const SisyphusProgressBar: React.FC<SisyphusProgressBarProps> = ({ 
+  progress: externalProgress, 
+  showPercentage = true 
+}) => {
+  const [internalProgress, setInternalProgress] = useState<number>(50);
+  const [physicsState, setPhysicsState] = useState<PhysicsState>({
     boulderPosition: 50,
     sisyphusPosition: 50,
     boulderVelocity: 0,
@@ -30,11 +33,11 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
   });
   
   // State for the rotating quotes
-  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [quoteIndex, setQuoteIndex] = useState<number>(0);
   const quoteRotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const animationRef = useRef<number>();
-  const lastTimeRef = useRef(Date.now());
+  const lastTimeRef = useRef<number>(Date.now());
 
   const progress = externalProgress !== undefined ? externalProgress : internalProgress;
 
@@ -48,6 +51,17 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
       "I leave Sisyphus at the foot of the mountain! One always finds one's burden again.",
       "The lucidity that was to constitute his torture at the same time crowns his victory."
   ];
+
+  // Physics constants
+  const PHYSICS = {
+    gravity: 120,
+    friction: 0.98,
+    chaseSpeed: 80,
+    pushSpeed: 25,
+    moveSpeed: 40,
+    initialVelocity: 20,
+    rollAmount: 35, // The amount the boulder rolls down when progress is decreased manually
+  };
 
   const getDisplayProgress = useCallback((sisyphusPos: number) => {
     const maxProgress = 95 + (sisyphusPos / 100) * 4.9;
@@ -116,7 +130,7 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
     }, 30000); // Approximately 2 times a minute
 
     return () => clearInterval(randomDropInterval);
-  }, [externalProgress]);
+  }, [externalProgress, PHYSICS.initialVelocity]);
 
   // Main physics animation loop
   useEffect(() => {
@@ -135,7 +149,7 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
           animationPhase
         } = prev;
 
-        let newState = {
+        const newState = {
           ...prev,
           animationPhase: (animationPhase + 1) % 1000
         };
@@ -206,7 +220,7 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
   const currentQuote = quotes[quoteIndex];
 
   return (
-    <div className="sisyphus-progress-bar w-full max-w-md mx-auto p-4 space-y-4 font-sans">
+    <div className="w-full max-w-md mx-auto p-4 space-y-4 font-sans" role="progressbar" aria-valuenow={displayProgress} aria-valuemin={0} aria-valuemax={100}>
       <div className="relative h-40 bg-amber-50 rounded-lg overflow-hidden shadow-2xl">
         <div className="absolute inset-0 border-4 border-amber-700 rounded-lg pointer-events-none">
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -369,14 +383,14 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
         {currentQuote && displayProgress < 95 && (
           <div className="absolute top-2 left-4 right-4 text-center">
             <div className="text-xs text-amber-900 italic bg-amber-50 bg-opacity-80 p-2 rounded-md shadow">
-              &ldquo;{currentQuote}&rdquo;
+              "{currentQuote}"
             </div>
           </div>
         )}
         {displayProgress >= 95 && (
           <div className="absolute top-4 left-4 right-4 text-center">
             <div className="text-sm text-amber-900 font-serif italic">
-               &ldquo;One must imagine Sisyphus happy.&rdquo;
+               "One must imagine Sisyphus happy."
             </div>
           </div>
         )}
