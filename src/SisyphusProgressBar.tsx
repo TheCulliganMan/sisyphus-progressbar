@@ -115,7 +115,7 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
     }, 30000); // Approximately 2 times a minute
 
     return () => clearInterval(randomDropInterval);
-  }, [externalProgress, PHYSICS.initialVelocity]);
+  }, [externalProgress]);
 
   // Main physics animation loop
   useEffect(() => {
@@ -189,7 +189,7 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [PHYSICS.gravity, PHYSICS.friction, PHYSICS.chaseSpeed, PHYSICS.pushSpeed, PHYSICS.moveSpeed, PHYSICS.initialVelocity, PHYSICS.rollAmount]);
+  }, []);
 
   const displayProgress = getDisplayProgress(physicsState.sisyphusPosition);
   const sisyphusPos = getPosition(physicsState.sisyphusPosition);
@@ -361,21 +361,21 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
           {isChasing && ( <text x={sisyphusX - 15} y={sisyphusY - 15} fontSize="4" fill="#8B4513" fontWeight="bold">!!!</text> )}
         </svg>
         {showPercentage && (
-          <div className="absolute bottom-3 right-3 text-sm font-bold text-amber-800 bg-amber-100 px-2 py-1 rounded-md border border-amber-400">
+          <div className="absolute bottom-3 right-3 text-sm font-bold text-amber-800 bg-amber-100 px-2 py-1 rounded border border-amber-600">
             {displayProgress.toFixed(1)}%
           </div>
         )}
         {currentQuote && displayProgress < 95 && (
           <div className="absolute top-2 left-4 right-4 text-center">
-            <div className="text-xs text-amber-800 italic bg-amber-50 px-3 py-2 rounded-md shadow-md">
-              &ldquo;{currentQuote}&rdquo;
+            <div className="text-xs text-amber-900 italic bg-amber-50 bg-opacity-80 p-2 rounded-md shadow">
+              "{currentQuote}"
             </div>
           </div>
         )}
         {displayProgress >= 95 && (
           <div className="absolute top-4 left-4 right-4 text-center">
-            <div className="text-sm text-amber-800 font-serif italic">
-               &ldquo;One must imagine Sisyphus happy.&rdquo;
+            <div className="text-sm text-amber-900 font-serif italic">
+               "One must imagine Sisyphus happy."
             </div>
           </div>
         )}
