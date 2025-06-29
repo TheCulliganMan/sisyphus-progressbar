@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-interface SisyphusProgressBarProps {
+export interface SisyphusProgressBarProps {
   progress?: number;
   showPercentage?: boolean;
 }

@@ -12,6 +12,9 @@ module.exports = {
     jest: true,
     node: true,
   },
+  globals: {
+    NodeJS: 'readonly',
+  },
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
