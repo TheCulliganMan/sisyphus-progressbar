@@ -4,33 +4,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
-A animated React progress bar inspired by the myth of Sisyphus. Watch as our eternal hero pushes his boulder up the mountain with realistic physics-based animations, complete with philosophical quotes and engaging visual storytelling.
+An animated React progress bar inspired by the myth of Sisyphus. Watch Sisyphus push his boulder up the mountain with physics-based animations and philosophical quotes.
+
+## 🌟 [**View Live Demo →**](https://theculliganman.github.io/sisyphus-progressbar)
 
 ![Sisyphus Progress Bar Demo](https://raw.githubusercontent.com/theculliganman/sisyphus-progressbar/main/demo.gif)
 
-## ✨ Features
+## Features
 
-- 🎬 **Physics-Based Animation** - Realistic boulder rolling and character movement
-- 🎭 **Interactive Storytelling** - Sisyphus chases runaway boulders and struggles uphill
-- 📚 **Philosophical Quotes** - Rotating quotes from Camus' "The Myth of Sisyphus"
-- ⚡ **Dual Modes** - Use as controlled or uncontrolled component
-- 🎨 **Beautiful Visuals** - Ancient Greek-inspired design with detailed animations
-- 📱 **Responsive** - Works perfectly on all screen sizes
-- 🔧 **TypeScript Ready** - Full type definitions included
-- 🪶 **Lightweight** - Minimal dependencies, pure React
+- Physics-based boulder rolling and character movement
+- Interactive storytelling - Sisyphus chases runaway boulders 
+- Rotating quotes from Camus' "The Myth of Sisyphus"
+- Works as controlled or uncontrolled component
+- Ancient Greek-inspired design
+- Responsive and TypeScript ready
 
-## 🚀 Quick Start
-
-### Installation
+## Quick Start
 
 ```bash
 npm install sisyphus-progressbar
 ```
 
-### Basic Usage
-
 ```jsx
-import React, { useState } from 'react';
 import { SisyphusProgressBar } from 'sisyphus-progressbar';
 
 function App() {
@@ -38,130 +33,47 @@ function App() {
 
   return (
     <div>
-      {/* Controlled Mode */}
-      <SisyphusProgressBar 
-        progress={progress} 
-        showPercentage={true} 
-      />
+      {/* Controlled mode */}
+      <SisyphusProgressBar progress={progress} />
       
-      {/* Uncontrolled Mode (Interactive) */}
-      <SisyphusProgressBar showPercentage={true} />
+      {/* Interactive mode */}
+      <SisyphusProgressBar />
     </div>
   );
 }
 ```
 
-## 📖 API Reference
-
-### Props
+## API
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `progress` | `number` (0-100) | `undefined` | External progress value. When provided, component becomes controlled |
-| `showPercentage` | `boolean` | `true` | Whether to display the percentage indicator |
+| `progress` | `number` (0-100) | `undefined` | Progress value. Makes component controlled when provided |
+| `showPercentage` | `boolean` | `true` | Show percentage display |
 
-### Component Modes
+**Controlled mode:** Provide a `progress` value to control it yourself.
 
-#### Controlled Mode
-When you provide a `progress` prop, the component becomes controlled:
-- Progress is determined by your `progress` value
-- No internal interactions or random events
-- Perfect for actual loading states
+**Interactive mode:** Leave `progress` undefined and it becomes interactive with a slider, random boulder drops, and rotating quotes.
 
-```jsx
-<SisyphusProgressBar progress={loadingPercent} />
-```
-
-#### Uncontrolled Mode (Interactive)
-When no `progress` prop is provided, the component becomes interactive:
-- Internal slider for manual control
-- Random boulder drops every ~30 seconds
-- Rotating philosophical quotes every minute
-- Perfect for demos and entertainment
-
-```jsx
-<SisyphusProgressBar />
-```
-
-## 🎨 Styling
-
-The component uses a warm, earth-toned color palette inspired by ancient Greek pottery and Mediterranean landscapes. It's designed to be visually appealing out of the box, but you can customize the container with CSS if needed.
-
-```css
-/* Example: Custom container styling */
-.my-progress-container {
-  background: linear-gradient(135deg, #f3e7b6 0%, #e8d5a3 100%);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-```
-
-## 🏗️ Development
-
-### Running the Example
+## Development
 
 ```bash
-# Clone the repository
 git clone https://github.com/theculliganman/sisyphus-progressbar.git
 cd sisyphus-progressbar
-
-# Install dependencies
 npm install
-
-# Build the package
 npm run build
 
 # Run the example
 cd example
-npm install
+npm install  
 npm start
 ```
 
-The example will open at `http://localhost:3000` and showcase all component features.
+## About
 
-### Building from Source
-
-```bash
-# Install dependencies
-npm install
-
-# Run type checking
-npm run type-check
-
-# Build the package
-npm run build
-
-# Watch mode for development
-npm run dev
-```
-
-## 🎭 The Story Behind
-
-This component brings Albert Camus' philosophical meditation on absurdity to life through interactive animation. As you watch Sisyphus push his boulder, you're witnessing a metaphor for human perseverance in the face of seemingly meaningless tasks.
-
-The component includes authentic quotes from "The Myth of Sisyphus" and demonstrates key moments from the myth:
-- **The Push** - Sisyphus straining to move the boulder uphill
-- **The Drop** - The boulder rolling back down (random events in uncontrolled mode)
-- **The Chase** - Sisyphus pursuing his escaped burden
-- **The Acceptance** - The moment of zen when progress is achieved
+This component is inspired by Albert Camus' "The Myth of Sisyphus". It shows the eternal struggle of pushing a boulder uphill, but with a twist - the boulder sometimes rolls back down on its own, and Sisyphus has to chase after it.
 
 > "The struggle itself toward the heights is enough to fill a man's heart. One must imagine Sisyphus happy." - Albert Camus
 
-## 🤝 Contributing
+## License
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Inspired by Albert Camus' "The Myth of Sisyphus"
-- Greek key patterns and Mediterranean color palette
-- Physics simulation inspired by real-world boulder dynamics
-
----
-
-Made with ❤️ and existential philosophy. [View Demo](https://theculliganman.github.io/sisyphus-progressbar) | [Report Issues](https://github.com/theculliganman/sisyphus-progressbar/issues)
+MIT
