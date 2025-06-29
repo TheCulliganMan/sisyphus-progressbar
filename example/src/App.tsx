@@ -36,20 +36,20 @@ function App() {
     <div className="min-h-screen py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">
+          <h1 className="text-4xl font-bold text-amber-900 mb-4">
             Sisyphus Progress Bar
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-xl text-amber-800 max-w-2xl mx-auto">
             A animated progress bar inspired by the myth of Sisyphus. 
             Watch as our eternal hero pushes his boulder up the mountain with physics-based animations.
           </p>
         </header>
 
-        <div className="space-y-12 bg-white/10 backdrop-blur-md rounded-2xl p-8">
+        <div className="space-y-12 bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-2xl">
           {/* Controlled Example */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-6">Controlled Progress</h2>
-            <div className="bg-white/20 rounded-xl p-6">
+            <h2 className="text-2xl font-semibold text-amber-900 mb-6">Controlled Progress</h2>
+            <div className="bg-white/40 rounded-xl p-6">
               <SisyphusProgressBar 
                 progress={controlledProgress} 
                 showPercentage={true}
@@ -60,21 +60,21 @@ function App() {
                   <button
                     onClick={startSimulation}
                     disabled={isSimulating}
-                    className="px-6 py-2 bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white rounded-lg font-medium transition-colors"
+                    className="px-6 py-2 bg-amber-700 hover:bg-amber-800 disabled:bg-gray-400 text-white rounded-lg font-medium transition-colors"
                   >
                     {isSimulating ? 'Simulating...' : 'Start Loading Simulation'}
                   </button>
                   
                   <button
                     onClick={resetProgress}
-                    className="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
+                    className="px-6 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-medium transition-colors"
                   >
                     Reset
                   </button>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-white font-medium">
+                  <label className="block text-amber-900 font-medium">
                     Manual Control: {controlledProgress.toFixed(1)}%
                   </label>
                   <input
@@ -84,7 +84,7 @@ function App() {
                     value={controlledProgress}
                     onChange={(e) => setControlledProgress(Number(e.target.value))}
                     disabled={isSimulating}
-                    className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer disabled:cursor-not-allowed"
+                    className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer disabled:cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -93,10 +93,10 @@ function App() {
 
           {/* Uncontrolled Example */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-6">Uncontrolled Progress (Interactive)</h2>
-            <div className="bg-white/20 rounded-xl p-6">
+            <h2 className="text-2xl font-semibold text-amber-900 mb-6">Uncontrolled Progress (Interactive)</h2>
+            <div className="bg-white/40 rounded-xl p-6">
               <SisyphusProgressBar showPercentage={true} />
-              <p className="text-white/80 text-sm mt-4 text-center">
+              <p className="text-amber-800 text-sm mt-4 text-center">
                 ↑ This version has its own internal controls. Watch for random boulder drops and rotating quotes!
               </p>
             </div>
@@ -104,13 +104,13 @@ function App() {
 
           {/* Without Percentage */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-6">Without Percentage Display</h2>
-            <div className="bg-white/20 rounded-xl p-6">
+            <h2 className="text-2xl font-semibold text-amber-900 mb-6">Without Percentage Display</h2>
+            <div className="bg-white/40 rounded-xl p-6">
               <SisyphusProgressBar 
                 progress={75} 
                 showPercentage={false}
               />
-              <p className="text-white/80 text-sm mt-4 text-center">
+              <p className="text-amber-800 text-sm mt-4 text-center">
                 Same component with showPercentage={`{false}`}
               </p>
             </div>
@@ -118,17 +118,17 @@ function App() {
 
           {/* Philosophy Section */}
           <section className="text-center">
-            <h2 className="text-2xl font-semibold text-white mb-6">The Philosophy</h2>
-            <blockquote className="text-lg text-white/90 italic max-w-3xl mx-auto mb-4">
+            <h2 className="text-2xl font-semibold text-amber-900 mb-6">The Philosophy</h2>
+            <blockquote className="text-lg text-amber-900 italic max-w-3xl mx-auto mb-4">
               "The struggle itself toward the heights is enough to fill a man's heart. 
               One must imagine Sisyphus happy."
             </blockquote>
-            <p className="text-white/70">— Albert Camus, The Myth of Sisyphus</p>
+            <p className="text-amber-700">— Albert Camus, The Myth of Sisyphus</p>
           </section>
 
           {/* Usage Instructions */}
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-6">Installation & Usage</h2>
+            <h2 className="text-2xl font-semibold text-amber-900 mb-6">Installation & Usage</h2>
             <div className="bg-gray-900 rounded-xl p-6 text-left">
               <pre className="text-green-400 text-sm overflow-x-auto">
 {`npm install sisyphus-progressbar
@@ -145,7 +145,7 @@ import { SisyphusProgressBar } from 'sisyphus-progressbar';
           </section>
         </div>
 
-        <footer className="text-center mt-12 text-white/60">
+        <footer className="text-center mt-12 text-amber-700">
           <p>Created with ❤️ and existential philosophy</p>
         </footer>
       </div>
