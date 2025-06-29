@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-// Define prop types for SisyphusLoader
-interface SisyphusLoaderProps {
+interface SisyphusProgressBarProps {
   progress?: number;
   showPercentage?: boolean;
 }
 
-const SisyphusLoader = ({ progress: externalProgress, showPercentage = true }: SisyphusLoaderProps) => {
+const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true }: SisyphusProgressBarProps) => {
   const [internalProgress, setInternalProgress] = useState(50);
   const [physicsState, setPhysicsState] = useState({
     boulderPosition: 50,
@@ -22,8 +21,7 @@ const SisyphusLoader = ({ progress: externalProgress, showPercentage = true }: S
   const [quoteIndex, setQuoteIndex] = useState(0);
   const quoteRotationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Fix: Type for animationRef
-  const animationRef = useRef<number | undefined>();
+  const animationRef = useRef<number>();
   const lastTimeRef = useRef(Date.now());
 
   const progress = externalProgress !== undefined ? externalProgress : internalProgress;
@@ -50,13 +48,11 @@ const SisyphusLoader = ({ progress: externalProgress, showPercentage = true }: S
     rollAmount: 35, // The amount the boulder rolls down when progress is decreased manually
   };
 
-  // Fix: Add type to useCallback parameter
   const getDisplayProgress = useCallback((sisyphusPos: number) => {
     const maxProgress = 95 + (sisyphusPos / 100) * 4.9;
     return Math.min(Math.max(0, sisyphusPos), maxProgress);
   }, []);
 
-  // Fix: Add type to useCallback parameter
   const getPosition = useCallback((prog: number) => {
     const position = Math.max(0, Math.min(100, prog)) / 100;
     return {
@@ -409,4 +405,4 @@ const SisyphusLoader = ({ progress: externalProgress, showPercentage = true }: S
   );
 };
 
-export default SisyphusLoader;
+export default SisyphusProgressBar;

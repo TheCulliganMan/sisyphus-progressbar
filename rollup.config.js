@@ -1,38 +1,36 @@
-const resolve = require('@rollup/plugin-node-resolve');
-const commonjs = require('@rollup/plugin-commonjs');
-const typescript = require('@rollup/plugin-typescript');
-const peerDepsExternal = require('rollup-plugin-peer-deps-external');
-const postcss = require('rollup-plugin-postcss');
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import packageJson from './package.json' assert { type: 'json' };
 
-module.exports = {
+export default {
   input: 'src/index.ts',
   output: [
     {
-      file: 'dist/index.js',
+      file: packageJson.main,
       format: 'cjs',
       sourcemap: true,
     },
     {
-      file: 'dist/index.esm.js',
+      file: packageJson.module,
       format: 'esm',
       sourcemap: true,
     },
   ],
   plugins: [
     peerDepsExternal(),
-    resolve({
-      browser: true,
-    }),
+    resolve(),
     commonjs(),
-    typescript({
-      tsconfig: './tsconfig.json',
-    }),
+    typescript({ tsconfig: './tsconfig.json' }),
     postcss({
-      extract: true,
+      config: {
+        path: './postcss.config.js',
+      },
+      extensions: ['.css'],
       minimize: true,
-      use: [
-        ['sass', { includePaths: ['./src'] }]
-      ]
+      extract: 'styles.css',
     }),
   ],
   external: ['react', 'react-dom'],
