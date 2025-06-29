@@ -1,6 +1,17 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './styles.css';
 
+// Physics constants
+const PHYSICS = {
+  gravity: 120,
+  friction: 0.98,
+  chaseSpeed: 80,
+  pushSpeed: 25,
+  moveSpeed: 40,
+  initialVelocity: 20,
+  rollAmount: 35, // The amount the boulder rolls down when progress is decreased manually
+};
+
 export interface SisyphusProgressBarProps {
   progress?: number;
   showPercentage?: boolean;
@@ -37,17 +48,6 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
       "I leave Sisyphus at the foot of the mountain! One always finds one's burden again.",
       "The lucidity that was to constitute his torture at the same time crowns his victory."
   ];
-
-  // Physics constants
-  const PHYSICS = {
-    gravity: 120,
-    friction: 0.98,
-    chaseSpeed: 80,
-    pushSpeed: 25,
-    moveSpeed: 40,
-    initialVelocity: 20,
-    rollAmount: 35, // The amount the boulder rolls down when progress is decreased manually
-  };
 
   const getDisplayProgress = useCallback((sisyphusPos: number) => {
     const maxProgress = 95 + (sisyphusPos / 100) * 4.9;
@@ -369,14 +369,14 @@ const SisyphusProgressBar = ({ progress: externalProgress, showPercentage = true
         {currentQuote && displayProgress < 95 && (
           <div className="absolute top-2 left-4 right-4 text-center">
             <div className="text-xs text-amber-900 italic bg-amber-50 bg-opacity-80 p-2 rounded-md shadow">
-              "{currentQuote}"
+              &ldquo;{currentQuote}&rdquo;
             </div>
           </div>
         )}
         {displayProgress >= 95 && (
           <div className="absolute top-4 left-4 right-4 text-center">
             <div className="text-sm text-amber-900 font-serif italic">
-               "One must imagine Sisyphus happy."
+               &ldquo;One must imagine Sisyphus happy.&rdquo;
             </div>
           </div>
         )}

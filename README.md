@@ -29,6 +29,7 @@ npm install sisyphus-progressbar
 ```tsx
 import React from 'react';
 import SisyphusProgressBar from 'sisyphus-progressbar';
+import 'sisyphus-progressbar/dist/styles.css';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
 ```tsx
 import React, { useState, useEffect } from 'react';
 import SisyphusProgressBar from 'sisyphus-progressbar';
+import 'sisyphus-progressbar/dist/styles.css';
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -106,15 +108,36 @@ This component is inspired by Albert Camus' essay "The Myth of Sisyphus" and inc
 
 ## Styling
 
-The component uses Tailwind CSS classes for styling. Make sure you have Tailwind CSS configured in your project, or the component will fall back to basic styling.
+The component comes with **scoped CSS** that won't interfere with your existing styles. All CSS classes are prefixed with `.sisyphus-progress-bar` to prevent conflicts with your project's styles.
 
-### Required CSS Classes
+### CSS Import
 
-The component uses these Tailwind classes:
-- Layout: `w-full`, `max-w-md`, `mx-auto`, `p-4`, `space-y-4`
-- Background: `bg-amber-50`, `bg-amber-100`, `bg-orange-50`
-- Colors: `text-amber-800`, `text-amber-900`, `border-amber-700`
-- Effects: `shadow-2xl`, `rounded-lg`, `opacity-*`
+**Important**: You must import the CSS file for the component to display correctly:
+
+```tsx
+import 'sisyphus-progressbar/dist/styles.css';
+```
+
+### Scoped Styling
+
+The component uses scoped CSS classes to avoid conflicts:
+- All styles are prefixed with `.sisyphus-progress-bar`
+- No global styles are applied
+- Safe to use alongside any CSS framework (Bootstrap, Tailwind, etc.)
+
+### Custom Styling
+
+If you need to customize the appearance, you can override the scoped classes:
+
+```css
+.sisyphus-progress-bar .bg-amber-50 {
+  background-color: #your-custom-color !important;
+}
+
+.sisyphus-progress-bar .text-amber-800 {
+  color: #your-text-color !important;
+}
+```
 
 ## Browser Support
 
